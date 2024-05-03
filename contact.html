@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="yourApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Your Website - Contact Us</title>
+</head>
+<body ng-controller="ContactController as contactCtrl">
+    <header >
+        <img src="https://tse3.mm.bing.net/th?id=OIP.VuXjEY57Zv971NPIdxQFOAHaHa&pid=Api&P=0&h=220" height="80" width="100" align="left">
+
+        <h1>LOST AND FOUND MANAGEMENT SYSTEM</h1>
+    </header>
+    <br>
+    <table></table>
+    <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="new_home.html">Home</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="lost.html">Lost Items</a></li>
+          <li><a href="found.html">Found Items</a></li>
+          <li><a href="search.html"> Search</a></li>
+
+
+      </ul>
+      
+  </nav>
+<br>
+    <section>
+
+        <h2>Contact Us</h2>
+        <form ng-submit="contactCtrl.submitForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" ng-model="contactCtrl.contactForm.name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" ng-model="contactCtrl.contactForm.email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" ng-model="contactCtrl.contactForm.message" required></textarea>
+
+            <button type="submit" onclick="myfun()">Submit</button>
+        </form>
+    </section>
+    <script>
+        function myfun()
+        {
+            alert("Thank You for Contacting Us!!")
+        }
+    </script>
+    <footer>
+        <p>&copy; 2023 LOST AND FOUND SYSTEM. All rights reserved.</p>
+    </footer>
+</body>
+</html>

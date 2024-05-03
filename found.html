@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html ng-app="lostFoundApp" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found item report</title>
+    <link rel="stylesheet" href="lostItem.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="LostFoundController">
+    <header id="fixed-top d-flex align-items-center header-scrolled">
+        <img src="https://tse3.mm.bing.net/th?id=OIP.VuXjEY57Zv971NPIdxQFOAHaHa&pid=Api&P=0&h=220" height="80" width="100" align="left">
+
+        <h1>LOST AND FOUND MANAGEMENT SYSTEM</h1>
+        <br>
+        <br>
+    </header>
+    
+    <br>
+    <nav class="navbar">
+      <ul class="nav-links">
+        
+          <li><a href="new_home.html">Home</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="lost.html">Lost Items</a></li>
+          <li><a href="found.html">Found Items</a></li>
+          <li><a href="search.html"> Search</a></li>
+
+      </ul>
+      
+  </nav>
+    <div>
+        <br>
+        <h1 align="center">Found Item Report</h1>
+        <form ng-submit="addItem()" id="form-section">
+            <label>Type:</label>
+            <select ng-model="newItem.type" required>
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+            </select>
+
+            <label for="name">Item Name:</label>
+            <input type="text" ng-model="newItem.name" required>
+
+            <label for="description">Description:</label>
+            <textarea ng-model="newItem.description" rows="4" required></textarea>
+
+            <label for="contact">Contact Information:</label>
+            <input type="text" ng-model="newItem.contact" required>
+
+            <label for="location">Location:</label>
+            <input type="text" ng-model="newItem.location" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div>
+        <h2 align="center">Found Items</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Item Name</th>
+                    <th>Description</th>
+                    <th>Contact Information</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{item.type}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.contact}}</td>
+                    <td>{{item.location}}</td>
+                    <td>
+                        <button ng-click="deleteItem(item)">Delete</button>
+                        <button ng-click="updateItem(item)">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var app = angular.module('lostFoundApp', []);
+
+        app.controller('LostFoundController', function ($scope, $http) {
+            $scope.items = [];
+
+            //getting all the item lists
+            $http.get('http://localhost:3000/getFoundItems')
+                .then(function (res) { $scope.items = res.data; })
+                .catch((err) => console.log('Error occurred while getting items'))
+
+            $scope.newItem = {
+                type: 'found', // Default type
+                name: '',
+                description: '',
+                contact: '',
+                location: ''
+            };
+
+            $scope.addItem = function () {
+                console.log('hello',$scope.newItem)
+                $http.post('http://localhost:3000/addItem', $scope.newItem)
+                    .then(
+                        function(response) {
+                            console.log('Item added successfully!');
+                            //updating the found items list
+                            $scope.items = [...$scope.items, $scope.newItem]
+                            $scope.newItem = {
+                                type: 'found',
+                                name: '',
+                                description: '',
+                                contact: '',
+                                location: ''
+                            };
+                        }
+                    )
+                    .catch(function(error) {
+                        console.error('Error adding item:', error);
+                    });
+
+                // $scope.items.push(angular.copy($scope.newItem));
+                // $scope.newItem = {}; // Clear the form
+                // // Update localStorage after adding a new item
+                // localStorage.setItem('foundItems', JSON.stringify($scope.items));
+            };
+
+            $scope.deleteItem = function (item) {
+                    var index = $scope.items.indexOf(item);
+                    if (index !== -1) {
+                        // Send a request to the server to delete the item
+                        $http.delete('http://localhost:3000/deleteItem/' + item.id)
+                            .then(function successCallback(response) {
+                                // Handle success
+                                console.log(response.data);
+                                $scope.items.splice(index, 1);
+                            }, function errorCallback(response) {
+                                // Handle error
+                                console.error(response.data);
+                            });
+                    }
+                };
+    
+                $scope.updateItem = function (item) {
+                    // Use an alert box to prompt the user for updated item details
+                    var updatedItem = angular.copy(item); // Copy the current item to start with its data
+            
+                    updatedItem.type = prompt('Update Type:', item.type) || item.type;
+                    updatedItem.name = prompt('Update Item Name:', item.name) || item.name;
+                    updatedItem.description = prompt('Update Description:', item.description) || item.description;
+                    updatedItem.contact = prompt('Update Contact Information:', item.contact) || item.contact;
+                    updatedItem.location = prompt('Update Location:', item.location) || item.location;
+            
+                    // Send the updated item data to the server
+                    $http({
+                        method: 'PUT',
+                        url: 'http://localhost:3000/updateItem/' + item.id,
+                        data: updatedItem,
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                    .then(function successCallback(response) {
+                        // Handle success
+                        console.log(response.data);
+                        // Update the local items array with the updated item data
+                        var index = $scope.items.findIndex(i => i.id === item.id);
+                        if (index !== -1) {
+                            $scope.items[index] = angular.copy(updatedItem);
+                        }
+                    }, function errorCallback(response) {
+                        // Handle error
+                        console.error(response.data);
+                    });
+                };
+
+        });
+    </script>
+</body>
+
+</html>

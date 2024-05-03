@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="authApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Login and Registration Form</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="loginRegister.js"></script>
+</head>
+<body ng-controller="AuthController as authCtrl">
+    <header id="fixed-top d-flex align-items-center header-scrolled">
+        <h1>LOST AND FOUND MANAGEMENT SYSTEM</h1>
+    </header>
+    <br>
+    <table></table>
+    <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="lost.html">Lost Items</a></li>
+          <li><a href="found.html">Found Items</a></li>
+          <li><a href="search.html"> Search</a></li>
+
+      </ul>
+      <div class="login-btn">
+          <a href="login.html">Login</a>
+      </div>
+  </nav>
+<section class="vh-100 gradient-custom" ng-click="authCtrl.register()">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+                          <div class="form" ng-show="!authCtrl.isLoggedIn">
+                            <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+                            <form ng-submit="authCtrl.register()">
+                                <label>Name:</label>
+                                <input type="text" name="name" placeholder="Fullname" ng-model="authCtrl.registerData.name" required>
+                                <label>Email:</label>
+                                <input type="email" ng-model="authCtrl.registerData.email" required>
+                                <label>Password:</label>
+                                <input type="password" ng-model="authCtrl.registerData.password" required>
+                                <label>Age:</label>
+                                <input type="number" name="age" placeholder="Age" ng-model="authCtrl.registerData.age" required>
+                                <label>Contact Number: </label>
+                                <input type="text" name="number" placeholder="Contact Number" ng-model="authCtrl.registerData.number" required>
+                                <button type="submit" id="button">Register</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+    <footer>
+        <p>&copy; 2023 LOST AND FOUND SYSTEM. All rights reserved.</p>
+    </footer>
+</body>
+</html>

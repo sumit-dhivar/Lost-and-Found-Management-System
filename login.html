@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="authApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Login and Registration Form</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="login.js"></script>
+</head>
+<body ng-controller="AuthController as authCtrl">
+    <header id="fixed-top d-flex align-items-center header-scrolled">
+        <h1>LOST AND FOUND MANAGEMENT SYSTEM</h1>
+    </header>
+    <br>
+    <table></table>
+    <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Lost Items</a></li>
+          <li><a href="#">Found Items</a></li>
+          <li><a href="#"> Search</a></li>
+
+      </ul>
+      <div class="login-btn">
+          <a href="login.html">Login</a>
+      </div>
+  </nav>
+<br>
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center" >
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                            <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                            <section ng-submit="authCtrl.register()">
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="typeEmailX">Usermail </label>
+                                <input type="text"  id="uname" class="form-control form-control-lg" />
+                            </div>
+
+                            <div class="form-outline form-white mb-4">
+                                <label class="form-label" for="typePasswordX">Password</label>
+                                <input type="password" id="pass" class="form-control form-control-lg" />
+                            </div>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a>
+                            </p>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit" ng-click="authCtrl.login()">Login</button><br><br>
+                            <p class="mb-0">Don't have an account? <a href="register.html" class="text-white-50 fw-bold">
+                                Sign Up</a>
+                            </p>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <p>&copy; 2023 LOST AND FOUND SYSTEM. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

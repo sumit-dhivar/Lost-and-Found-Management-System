@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.html">
+    <link rel="stylesheet" href="register.html">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="home.html">
+    <link rel="stylesheet" href="aboutUs.html">
+    <link rel="stylesheet" href="contact.html">
+    <link rel="stylesheet" href="lost.html">
+    <link rel="stylesheet" href="found.html">
+    <title>Lost and Found Management System</title>
+    <style>
+        table_lost,th,td {
+            border: #202426 solid;
+            margin: 3px;
+            padding: 2px;
+            color: #0b0000;
+        }
+        th {
+            background-color: #615f5d;
+            color: white;
+            height: 40px;
+        }
+        td{
+            align-content:center;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        div.gallery {
+        align-items: center;
+        margin: 6px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 400px;
+    }
+    
+    div.gallery:hover {
+      border: 1px solid #777;
+    }
+    
+    div.gallery img {
+      width: 100%;
+      height: auto;
+    }
+    
+    div.desc {
+      padding: 15px;
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LOST AND FOUND MANAGEMENT SYSTEM</h1>
+    </header>
+    <br>
+    <nav class="navbar">
+      <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="aboutUs.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="lost.html">Lost Items</a></li>
+          <li><a href="found.html">Found Items</a></li>
+          <li><a href="search.html"> Search</a></li>
+      </ul>
+      <div class="login-btn">
+          <a href="login.html">Login</a>
+      </div>
+    </nav>
+    <hr>
+        <h2 align="center"><u>Some Lost and Found items</u></h1>
+    <hr> 
+    <table id="table_lost" align="center">
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><a>Lost</a></td>
+            <td>Ring</td>
+            <td>Golden colour</td>
+        </tr>
+        <tr>
+            <td>Found</td>
+            <td>Pocket</td>
+            <td>Brown colour</td>
+        </tr>
+        <tr>
+            <td>Lost</td>
+            <td>Keys</td>
+            <td>House key with red color keychain</td>
+        </tr>
+        <tr>
+            <td>Lost</td>
+            <td>Bag</td>
+            <td>Yellow Traveler Bag</td>
+        </tr>
+        <tr>
+            <td>Found</td>
+            <td>Mobile</td>
+            <td>Realme Narzo 50A</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+
+    <table align="center">
+    <tr>
+    <td><div class="gallery">
+        <a target="_blank" href="ht.html">
+          <img src="https://i0.wp.com/tesswhitehurst.com/wp-content/uploads/2018/11/ring-1286607_1920.jpg?fit=1200%2C698&ssl=1" alt="Ring" width="300" height="250">
+        </a>
+        <div class="desc">
+            Lost Item 
+            Item Name: Ring
+            Description: colour-Golden, Gold Ring 
+        </div>
+    </div>
+    </td>
+    <td>
+    <div class="gallery">
+        <a target="_blank" href="ht.html">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxejSRvZZazyXm3_ZWBj1CDSoYR5tZRA2hLLvmMkeNGQ2-KziUqk3_E7a5fyOpdxHfXko&usqp=CAU" alt="Pocket" width="300" height="250">
+        </a>
+        <div class="desc">
+            Lost Item,
+            Item Name: Pocket,
+            Description: colour-Brown, In Pocket there is ID card, Adhar card and some important things
+        </div>
+    </div>
+    </td>
+    <td>
+    <div class="gallery">
+        <a target="_blank" href="ht.html">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1guKtOjewD_bI5s2NzsFuFu7ejnsR605liTkwTuaf7ijWfBAksv1_Oe5z3KbT9fHzIE0&usqp=CAU" alt="Keys" width="300" height="250">
+        </a>
+        <div class="desc">
+            Lost Item, 
+            Item Name: Keys, 
+            Description: House Keys, Red colour kitchen, contains 3 keys
+        </div>
+    </div>
+    </td>
+    </tr>
+    <tr>
+    <td>
+        <div class="gallery">
+            <a target="_blank" href="ht.html">
+            <img src="https://www.japanlivingguide.com/media/14rlhfym/lost-and-found-in-japan-how-to-find-lost-items2.jpeg?width=650&height=433" alt="Mobile" width="300" height="250">
+            </a>
+            <div class="desc">
+                Lost Item,
+                Item Name: Mobile,  
+                Description: Model RMX3430, Device Name narzo 50A, Colour sky-blue
+            </div>
+        </div>
+    </td>
+    <td>
+        <div class="gallery">
+            <a target="_blank" href="ht.html">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrDijsCcklvcvZoP4-fsS6aV5sQ03AA0zF3NccVf2ET2tmnJZgVA6Oaa6g2InVakJgsbk&usqp=CAU" alt="Bag" width="300" height="250">
+            </a>
+            <div class="desc">
+                Lost Item,
+                Item Name: Bag
+                Description: colour-Colour, Travel Bag
+            </div>        
+        </div>
+    </td>
+    <td>
+        <div class="gallery">
+            <a target="_blank" href="ht.html">
+            <img src="https://tse4.mm.bing.net/th?id=OIP.10IubCAx9UqhJP9534u-ZwHaDd&pid=Api&P=0&h=180" alt="LostFound" width="300" height="250">
+            </a>
+            <div class="desc">
+                Lost Item,
+                Lost_Found System
+                WE ARE HERE TO HELP YOU...!!
+            </div>       
+        </div>
+    </td>
+    </tr>
+    </table>
+
+    <footer>
+        <p>&copy; 2023 LOST AND FOUND SYSTEM. All rights reserved.</p>
+    </footer>
+</body>
+</html>
